@@ -42,14 +42,14 @@ class AnthropicProvider(BaseLLMProvider):
     """Anthropic Claude provider"""
 
     def __init__(self, api_key: str):
-        self.client = anthropic.Anthropic(api_key=api_key)
+        self.client = anthropic.AsyncAnthropic(api_key=api_key)
 
     async def generate(
         self,
         messages: List[Message],
         max_tokens: int = 1024,
         temperature: float = 0.7,
-        model: str = "claude-3-sonnet-20240229",
+        model: str = "claude-3-5-sonnet-20241022",
         **kwargs,
     ) -> str:
         try:
@@ -58,7 +58,7 @@ class AnthropicProvider(BaseLLMProvider):
                 {"role": msg.role, "content": msg.content} for msg in messages
             ]
 
-            response = self.client.messages.create(
+            response = await self.client.messages.create(
                 model=model,
                 max_tokens=max_tokens,
                 temperature=temperature,

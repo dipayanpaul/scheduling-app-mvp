@@ -33,7 +33,7 @@ class Settings(BaseSettings):
     ANTHROPIC_API_KEY: str = ""
     OPENAI_API_KEY: str = ""
     DEFAULT_LLM_PROVIDER: str = "anthropic"
-    DEFAULT_MODEL: str = "claude-3-sonnet-20240229"
+    DEFAULT_MODEL: str = "claude-3-5-sonnet-20241022"
 
     # Google Calendar
     GOOGLE_CLIENT_ID: str = ""
